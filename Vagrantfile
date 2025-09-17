@@ -4,8 +4,6 @@ Vagrant.configure("2") do |config|
   BOX_NAME = "ubuntu/jammy64"
   MEMORY = 2048
   CPUS = 2
-  UART_PORT = "0x3F8"
-  UART_IRQ = "4"
   HOST_ONLY_NAME= "VirtualBox Host-Only Ethernet Adapter"
   config.vm.box = BOX_NAME
   # Macchina1 -> web
