@@ -14,6 +14,6 @@ sudo mysql -u root -e "CREATE USER '${DB_USER}'@'${DB_HOST}' IDENTIFIED BY '${DB
 sudo mysql -u root -e "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'${DB_HOST}';"
 sudo mysql -u root -e "FLUSH PRIVILEGES;"
 sudo touch /etc/mysql/mariadb.conf.d/99-server.cnf
-echo "bind-address = 0.0.0.0" >> /etc/mysql/mariadb.conf.d/99-server.cnf
+sudo bash -c 'echo "bind-address = 0.0.0.0" >> /etc/mysql/mariadb.conf.d/99-server.cnf'
 
 sudo systemctl restart mariadb
