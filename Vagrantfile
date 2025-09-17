@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
       vb.name = "web.m340"
       vb.memory = MEMORY
       vb.cpus = CPUS
-	    vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+	  vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
     vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
     end
     subconfig.vm.provision "shell", path: "provisioning/web.sh"
