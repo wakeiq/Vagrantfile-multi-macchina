@@ -4,8 +4,6 @@ Vagrant.configure("2") do |config|
   BOX_NAME = "ubuntu/jammy64"
   MEMORY = 2048
   CPUS = 2
-  UART_PORT = "0x3F8"
-  UART_IRQ = "4"
   HOST_ONLY_NAME= "VirtualBox Host-Only Ethernet Adapter"
 
   WEB_NAME = "web.m340"
@@ -23,8 +21,8 @@ Vagrant.configure("2") do |config|
       vb.name = WEB_NAME
       vb.memory = MEMORY
       vb.cpus = CPUS
-      vb.customize ["modifyvm", :id, "--uart1", UART_PORT, UART_IRQ]
-      vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
+	    vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+    vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
     end
     subconfig.vm.provision "shell", path: "provisioning/web.sh"
   end
@@ -37,8 +35,8 @@ Vagrant.configure("2") do |config|
       vb.name = DB_NAME
       vb.memory = MEMORY
       vb.cpus = CPUS
-      vb.customize ["modifyvm", :id, "--uart1", UART_PORT, UART_IRQ]
-      vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
+	    vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+    vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
     end
     subconfig.vm.provision "shell", path: "provisioning/db.sh"
   end
